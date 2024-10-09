@@ -1,0 +1,396 @@
+fileFormatVersion: 2
+guid: d5c64e8ca8e9d48b5ba83d9daad24b4b
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: "Copied Avatar Rig Configuration mis-match. Transform hierarchy
+      does not match:\n\tTransform 'bind_office_m_rival_hips01' for human bone 'Hips'
+      not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: bind_office_m_rival_hips01
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_l_thigh01
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_r_thigh01
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_l_calf01
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_r_calf01
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_l_foot01
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_r_foot01
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_spine_a01
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_spine_b01
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_neck01
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_head01
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_l_shoulder01
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_r_shoulder01
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_l_upperarm01
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_r_upperarm01
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_l_forearm01
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_r_forearm01
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bind_office_m_rival_spine_c01
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: be_office_m_rival_l_hand01
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: be_office_m_rival_r_hand01
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: mesh_office_m_rival01(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_hips01
+      parentName: mesh_office_m_rival01(Clone)
+      position: {x: -0, y: 0.0037396802, z: 0.000109713794}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_l_thigh01
+      parentName: bind_office_m_rival_hips01
+      position: {x: -0.0004022461, y: -0.00010165787, z: -0.000009040272}
+      rotation: {x: -0.000004801695, y: 0.03257612, z: 0.9994693, w: 0.00014732101}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_l_calf01
+      parentName: bind_office_m_rival_l_thigh01
+      position: {x: -8.8817833e-20, y: 0.0017245805, z: 0}
+      rotation: {x: -0.07634358, y: 0.00010010342, z: -0.0013073947, w: 0.99708074}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_l_foot01
+      parentName: bind_office_m_rival_l_calf01
+      position: {x: -0, y: 0.0016936361, z: -2.7755574e-20}
+      rotation: {x: 0.49509287, y: -0.07656704, z: 0.04385711, w: 0.8643478}
+      scale: {x: 1, y: 1, z: 1}
+    - name: be_office_m_rival_l_toes01
+      parentName: bind_office_m_rival_l_foot01
+      position: {x: 0.00005760891, y: 0.00048394423, z: 0.00006205871}
+      rotation: {x: 0.30429968, y: -0.17052643, z: 0.055466168, w: 0.9355458}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_r_thigh01
+      parentName: bind_office_m_rival_hips01
+      position: {x: 0.0004022461, y: -0.00010165787, z: -0.000011790108}
+      rotation: {x: 0.000004959324, y: 0.03365032, z: 0.9994337, w: -0.00014729478}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_r_calf01
+      parentName: bind_office_m_rival_r_thigh01
+      position: {x: -0, y: 0.0017248265, z: 0}
+      rotation: {x: -0.073684014, y: -0.0000965986, z: 0.0013074195, w: 0.9972808}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_r_foot01
+      parentName: bind_office_m_rival_r_calf01
+      position: {x: -0, y: 0.0016925704, z: 2.2204458e-20}
+      rotation: {x: 0.48529577, y: 0.07973846, z: -0.044501077, w: 0.8695685}
+      scale: {x: 1, y: 1, z: 1}
+    - name: be_office_m_rival_r_toes01
+      parentName: bind_office_m_rival_r_foot01
+      position: {x: -0.00004113468, y: 0.00049435225, z: 0.00011184893}
+      rotation: {x: 0.31034538, y: 0.15915401, z: -0.052785862, w: 0.93571866}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_spine_a01
+      parentName: bind_office_m_rival_hips01
+      position: {x: -0, y: 0.00018539236, z: -0.000013396661}
+      rotation: {x: -0.036059976, y: 0, z: -0, w: 0.99934965}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_spine_b01
+      parentName: bind_office_m_rival_spine_a01
+      position: {x: -0, y: 0.0002168554, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_spine_c01
+      parentName: bind_office_m_rival_spine_b01
+      position: {x: -0, y: 0.00024783425, z: 4.4408917e-20}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_l_shoulder01
+      parentName: bind_office_m_rival_spine_c01
+      position: {x: -0.00020259416, y: 0.00024542672, z: -0.0000020708706}
+      rotation: {x: 0.5359879, y: -0.46028307, z: 0.541478, w: 0.45569515}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_l_upperarm01
+      parentName: bind_office_m_rival_l_shoulder01
+      position: {x: -0, y: 0.0004118232, z: 0}
+      rotation: {x: -0.05762151, y: -0.106212586, z: 0.004106045, w: 0.99266404}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_l_forearm01
+      parentName: bind_office_m_rival_l_upperarm01
+      position: {x: -0, y: 0.0013849693, z: 0}
+      rotation: {x: -0.016769543, y: 0.0020718644, z: -0.037230827, w: 0.9991638}
+      scale: {x: 1, y: 1, z: 1}
+    - name: be_office_m_rival_l_hand01
+      parentName: bind_office_m_rival_l_forearm01
+      position: {x: -0, y: 0.0013885316, z: 7.1054267e-19}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_neck01
+      parentName: bind_office_m_rival_spine_c01
+      position: {x: -0, y: 0.00027881385, z: 4.1891938e-11}
+      rotation: {x: 0.03606009, y: -0, z: -0, w: 0.99934965}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_head01
+      parentName: bind_office_m_rival_neck01
+      position: {x: -0, y: 0.000063555526, z: 0.000013183266}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: be_office_m_rival_head01
+      parentName: bind_office_m_rival_head01
+      position: {x: -0, y: 0.001193468, z: 0.00024755998}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_r_shoulder01
+      parentName: bind_office_m_rival_spine_c01
+      position: {x: 0.00020259416, y: 0.00024547588, z: -0.0000027506774}
+      rotation: {x: -0.53502476, y: -0.46110815, z: 0.54232, w: -0.45499098}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_r_upperarm01
+      parentName: bind_office_m_rival_r_shoulder01
+      position: {x: -0, y: 0.0004118232, z: 0}
+      rotation: {x: -0.057577938, y: 0.10335098, z: -0.0046565235, w: 0.9929662}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bind_office_m_rival_r_forearm01
+      parentName: bind_office_m_rival_r_upperarm01
+      position: {x: -0, y: 0.0013848216, z: -7.1054267e-19}
+      rotation: {x: -0.01640695, y: -0.001958325, z: 0.03717883, w: 0.9991721}
+      scale: {x: 1, y: 1, z: 1}
+    - name: be_office_m_rival_r_hand01
+      parentName: bind_office_m_rival_r_forearm01
+      position: {x: -0, y: 0.0013883902, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mesh_office_m_rival01
+      parentName: mesh_office_m_rival01(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.01
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 2c6fcb3004ba0e344908982afcefad9c, type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

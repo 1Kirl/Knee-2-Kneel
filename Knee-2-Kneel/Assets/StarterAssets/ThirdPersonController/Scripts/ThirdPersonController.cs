@@ -1,4 +1,5 @@
-﻿ using UnityEngine;
+﻿using System;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -46,9 +47,21 @@ namespace StarterAssets
         [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
         public float FallTimeout = 0.15f;
 
+        [Space(10)]
+        [Tooltip("Time required to pass before being able to kick again. Set to 0f to instantly kick again")]
+        public float KickTimeout = 0.50f;
+
+        [Tooltip("Time required to end the kick motion")]
+        public float KickingTimeout = 0.50f;
+        
+
         [Header("Player Grounded")]
         [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
         public bool Grounded = true;
+
+        [Header("Player Kicking")]
+        [Tooltip("If the character is kicking or not")]
+        public bool Kicking = false;
 
         [Tooltip("Useful for rough ground")]
         public float GroundedOffset = -0.14f;
@@ -90,11 +103,14 @@ namespace StarterAssets
         // timeout deltatime
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
+        private float _kickTimeoutDelta;
+        private float _kickingTimeoutDelta;
 
         // animation IDs
         private int _animIDSpeed;
         private int _animIDGrounded;
         private int _animIDJump;
+        private int _animIDKick;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
 
@@ -150,6 +166,8 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+            _kickTimeoutDelta = KickTimeout;
+            _kickingTimeoutDelta = 0.0f;
         }
 
         private void Update()
@@ -158,7 +176,9 @@ namespace StarterAssets
 
             JumpAndGravity();
             GroundedCheck();
-            Move();
+            //if not moving;
+            if(!Kicking) Move();
+            Kick();
         }
 
         private void LateUpdate()
@@ -172,6 +192,7 @@ namespace StarterAssets
             _animIDGrounded = Animator.StringToHash("Grounded");
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
+            _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
         }
 
@@ -220,13 +241,14 @@ namespace StarterAssets
 
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
-            if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+            if (_input.move == Vector2.zero || Kicking) targetSpeed = 0.0f;
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
             float speedOffset = 0.1f;
             float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
+            //ruf: normally 1f 'cause this would not be analog
 
             // accelerate or decelerate to target speed
             if (currentHorizontalSpeed < targetSpeed - speedOffset ||
@@ -253,6 +275,7 @@ namespace StarterAssets
 
             // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is a move input rotate player when the player is moving
+            // if not be kicking !Kicking && <- Solved at calling Move();
             if (_input.move != Vector2.zero)
             {
                 _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
@@ -271,7 +294,7 @@ namespace StarterAssets
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
-            // update animator if using character
+            // update animator, if using character
             if (_hasAnimator)
             {
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
@@ -300,7 +323,7 @@ namespace StarterAssets
                 }
 
                 // Jump
-                if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+                if (_input.jump && _jumpTimeoutDelta <= 0.0f && !Kicking)
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -339,6 +362,8 @@ namespace StarterAssets
 
                 // if we are not grounded, do not jump
                 _input.jump = false;
+                // if we are not grounded, do not consider kick input
+                _input.kick = false;
             }
 
             // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
@@ -348,6 +373,56 @@ namespace StarterAssets
             }
         }
 
+        private void Kick(){
+            if(Grounded && !Kicking)
+            {
+                
+                //pressed kick button
+                if(_input.kick && _kickTimeoutDelta <= 0.0f)
+                {
+                    //reset cool down time
+                    _kickTimeoutDelta = KickTimeout;
+
+                    //kick starts, now count down the kicking time
+                    _kickingTimeoutDelta = KickingTimeout;
+                    
+                    //charactor is kicking
+                    Kicking = true;
+
+                    //_input.move = Vector2.zero;
+                    //_speed = 0.0f;
+                
+
+                    if(_hasAnimator)
+                    {
+                        _animator.SetTrigger("Kick");
+                    }
+                }
+            }
+            if(Kicking)
+            {   
+                //Clear that kick button is not pressed
+                _input.kick = false;
+
+                //reset jump input during kick
+                _input.jump = false;
+                
+                //_input.move = Vector2.zero;
+                //_speed = 0.0f;
+
+                _kickingTimeoutDelta -= Time.deltaTime;
+                //if kick is over
+                if(_kickingTimeoutDelta <= 0.0f)
+                {
+                    Debug.Log("kick's over");
+                    Kicking = false; 
+                }
+            }
+            if(_kickTimeoutDelta >= 0.0f)
+            {
+                _kickTimeoutDelta -= Time.deltaTime;
+            }
+        }
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {
             if (lfAngle < -360f) lfAngle += 360f;
@@ -375,7 +450,7 @@ namespace StarterAssets
             {
                 if (FootstepAudioClips.Length > 0)
                 {
-                    var index = Random.Range(0, FootstepAudioClips.Length);
+                    var index = UnityEngine.Random.Range(0, FootstepAudioClips.Length);
                     AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
                 }
             }

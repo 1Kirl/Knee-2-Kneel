@@ -32,6 +32,8 @@ namespace StarterAssets
 
 		//Must not be Serialized by JsonUtility
 		[NonSerialized]
+		public int sOrp;
+		[NonSerialized]
 		public Vector2 move_t;
 		[NonSerialized]
 		public Vector2 look_t;

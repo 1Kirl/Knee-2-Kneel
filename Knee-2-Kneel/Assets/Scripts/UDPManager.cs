@@ -13,7 +13,7 @@ using System.Security.Cryptography;
 public class UDPManager : MonoBehaviour
 {
     public GameObject player_student;
-    
+
     //[SerializeField]
     //public StarterAssetsInputs SAInput_out;
     public string receivedMessage;
@@ -44,6 +44,7 @@ public class UDPManager : MonoBehaviour
 
     void Update()
     {
+
         //Convert to Json every frame. Becuase of user's inputs are rapid in game
         timeSinceLastSend += Time.deltaTime;
         SAInput_json = JsonUtility.ToJson(SAInput);

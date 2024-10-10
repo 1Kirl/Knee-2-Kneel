@@ -31,8 +31,8 @@ namespace StarterAssets
 		public bool cursorInputForLook = true;
 
 		//Must not be Serialized by JsonUtility
-		[NonSerialized]
-		public int sOrp;
+		//[NonSerialized]
+		//public int sOrp;
 		[NonSerialized]
 		public Vector2 move_t;
 		[NonSerialized]
@@ -59,17 +59,17 @@ namespace StarterAssets
 		private string kickbool;
 		private string sprintbool;
 		private string cIFLbool;
-		void Start(){
+		void Start()
+		{
 			udp_manager = GameObject.Find("udp_manager");
 			udp_manager_cs = udp_manager.GetComponent<UDPManager>();
 			SAInput_out_json_nt = new JObject();
-
 		}
 		void Update(){
 			SAInput_out_json = udp_manager_cs.receivedMessage;
 			SAInput_out_json_nt =  JObject.Parse(SAInput_out_json);
-			move_t.x = (float)(SAInput_out_json_nt["move"]["x"]);
-			move_t.y = (float)(SAInput_out_json_nt["move"]["y"]);
+			move_t.x = (float)SAInput_out_json_nt["move"]["x"];
+			move_t.y = (float)SAInput_out_json_nt["move"]["y"];
 			// look.x = (float)(SAInput_out_json_nt["look"]["x"]);
 			// look.y = (float)(SAInput_out_json_nt["look"]["y"]);
 
@@ -84,7 +84,6 @@ namespace StarterAssets
 
 			// cIFLbool = (string)SAInput_out_json_nt["cursorInputForLook"];
 			// cursorInputForLook_t = cIFLbool[0] == 'T' ? true : false;
-
 		}
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)

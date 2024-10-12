@@ -157,8 +157,6 @@ namespace StarterAssets
             
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
-            //_input = udp_manager.GetComponent<UDPManager>().SAInput_out;
-            //_input = udp_manager.GetComponent<UDPManager>().GetStarterAssetsInputs();
             _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM 
             _playerInput = GetComponent<PlayerInput>();
@@ -252,7 +250,7 @@ namespace StarterAssets
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
             float speedOffset = 0.1f;
-            float inputMagnitude = _input.analogMovement_t ? _input.move_t.magnitude : 1f;
+            float inputMagnitude = _input.analogMovement ? _input.move_t.magnitude : 1f;
             //ruf: normally 1f 'cause this would not be analog
 
             // accelerate or decelerate to target speed

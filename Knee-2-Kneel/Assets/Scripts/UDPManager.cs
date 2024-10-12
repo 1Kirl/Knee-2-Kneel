@@ -12,15 +12,12 @@ using System.Security.Cryptography;
 
 public class UDPManager : MonoBehaviour
 {
-    public GameObject player_student;
-
+    public GameObject player_obj;
     //[SerializeField]
     //public StarterAssetsInputs SAInput_out;
     public string receivedMessage;
     [SerializeField]
     private StarterAssetsInputs SAInput;
-
-    //public GameObject obj;
     private UdpClient udpClient;
     private IPEndPoint remoteEndPoint;
     private string SAInput_json;
@@ -30,13 +27,18 @@ public class UDPManager : MonoBehaviour
     {
         //Compose Packet
         //Convert player's SAI script to Json
-        SAInput = player_student.GetComponent<StarterAssetsInputs>();
+    
+        SAInput = player_obj.GetComponent<StarterAssetsInputs>();
+        
         SAInput.roomId = 1;
         SAInput.dataName = "enter";
         //나중에 spring딴에서 roomId는 제공 받는다.
         //Scene manager에 저장해뒀다가 여기에 넘기면 될듯 
+        
+        
         SAInput_json = JsonUtility.ToJson(SAInput);
         StartUDPClient("141.164.52.130", 3001);
+        
         // Send enter data at very first with "name": "enter"
         SendData(SAInput_json);
         SAInput.dataName = "state";
@@ -46,11 +48,13 @@ public class UDPManager : MonoBehaviour
     {
         //Convert to Json every frame. Becuase of user's inputs are rapid in game
         timeSinceLastSend += Time.deltaTime;
+        
         SAInput_json = JsonUtility.ToJson(SAInput);
+        
         if(timeSinceLastSend >= sendInterval)
         {
-            Debug.Log("send data: "+ SAInput_json);
             SendData(SAInput_json);
+            Debug.Log("player "+ SAInput.playerIndex +" sends data: "+ SAInput_json);
             timeSinceLastSend = 0f;
         }
         //ReceiveData();
@@ -66,6 +70,7 @@ public class UDPManager : MonoBehaviour
     { 
         byte[] receivedBytes = udpClient.EndReceive(result, ref remoteEndPoint); //Get a byte array
         receivedMessage = System.Text.Encoding.UTF8.GetString(receivedBytes); //this is json
+        
         Debug.Log("received!"+ receivedMessage);
         udpClient.BeginReceive(ReceiveData, null);
     }

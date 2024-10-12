@@ -14,25 +14,30 @@ namespace StarterAssets
 {
 	public class StarterAssetsInputs : MonoBehaviour
 	{
+		//packet's list
+		public int playerIndex;
 		public int roomId;
 		public string dataName;
 		[Header("Character Input Values")]
 		public Vector2 move;
-		public Vector2 look;
 		public bool jump;
 		public bool sprint;
 		public bool kick;
 
+		//datas which are not in packet
+		[NonSerialized]
+		public Vector2 look;
 		[Header("Movement Settings")]
-		public bool analogMovement;
+		[NonSerialized]
+		public bool analogMovement = false;
 
 		[Header("Mouse Cursor Settings")]
+		[NonSerialized]
 		public bool cursorLocked = true;
+		[NonSerialized]
 		public bool cursorInputForLook = true;
 
-		//Must not be Serialized by JsonUtility
-		//[NonSerialized]
-		//public int sOrp;
+		//Must not be Serialized by JsonUtility, also not be in packet
 		[NonSerialized]
 		public Vector2 move_t;
 		[NonSerialized]
@@ -43,14 +48,7 @@ namespace StarterAssets
 		public bool sprint_t;
 		[NonSerialized]
 		public bool kick_t;
-		[NonSerialized]
-		public bool analogMovement_t;
-		[NonSerialized]
-		public bool cursorLocked_t = true;
-		[NonSerialized]
-		public bool cursorInputForLook_t = true;
-
-
+		//private GameObject role_manager;
 		private GameObject udp_manager;
 		private UDPManager udp_manager_cs;
 		private string SAInput_out_json;
@@ -61,29 +59,32 @@ namespace StarterAssets
 		private string cIFLbool;
 		void Start()
 		{
+			//role_manager = GameObject.Find("roleManager");
 			udp_manager = GameObject.Find("udp_manager");
 			udp_manager_cs = udp_manager.GetComponent<UDPManager>();
-			SAInput_out_json_nt = new JObject();
+			SAInput_out_json_nt = new JObject(); //nt for newton
+			//Reference sigleton object's variable
+			Debug.Log("received role: "+ playerIndex);
 		}
 		void Update(){
 			SAInput_out_json = udp_manager_cs.receivedMessage;
+			Debug.Log("input SAI received from UDPManager: " + SAInput_out_json);
 			SAInput_out_json_nt =  JObject.Parse(SAInput_out_json);
-			move_t.x = (float)SAInput_out_json_nt["move"]["x"];
-			move_t.y = (float)SAInput_out_json_nt["move"]["y"];
-			// look.x = (float)(SAInput_out_json_nt["look"]["x"]);
-			// look.y = (float)(SAInput_out_json_nt["look"]["y"]);
+			
+			if((int)SAInput_out_json_nt["playerIndex"] == playerIndex)
+			{
+				move_t.x = (float)SAInput_out_json_nt["move"]["x"];
+				move_t.y = (float)SAInput_out_json_nt["move"]["y"];
+				
+				jumpbool = (string)SAInput_out_json_nt["jump"];
+				jump_t = jumpbool[0] == 'T' ? true : false;
+		
+				kickbool = (string)SAInput_out_json_nt["kick"];
+				kick_t = kickbool[0] == 'T' ? true : false;
 
-			jumpbool = (string)SAInput_out_json_nt["jump"];
-			jump_t = jumpbool[0] == 'T' ? true : false;
-	
-			kickbool = (string)SAInput_out_json_nt["kick"];
-			kick_t = kickbool[0] == 'T' ? true : false;
-
-			sprintbool = (string)SAInput_out_json_nt["sprint"];
-			sprint_t = sprintbool[0] == 'T' ? true : false;
-
-			// cIFLbool = (string)SAInput_out_json_nt["cursorInputForLook"];
-			// cursorInputForLook_t = cIFLbool[0] == 'T' ? true : false;
+				sprintbool = (string)SAInput_out_json_nt["sprint"];
+				sprint_t = sprintbool[0] == 'T' ? true : false;
+			}
 		}
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
@@ -140,13 +141,11 @@ namespace StarterAssets
 		public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
-			Debug.Log(sprint);
 		}
 
 		private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
-			//SetCursorState(cursorLocked);
 		}
 
 		private void SetCursorState(bool newState)
